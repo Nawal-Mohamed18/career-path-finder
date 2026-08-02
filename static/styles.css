@@ -1,0 +1,274 @@
+:root {
+  --ink: #1a2e24;
+  --muted: #3d5248;
+  --line: rgba(40, 60, 50, 0.12);
+  --accent: #2f6b4f;
+  --accent-soft: rgba(47, 107, 79, 0.1);
+  --panel: rgba(255, 255, 255, 0.62);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 0%, #d8e8df 0%, transparent 55%),
+    radial-gradient(ellipse 70% 40% at 90% 10%, #f0e2c8 0%, transparent 50%),
+    linear-gradient(165deg, #f7f4ef 0%, #eef2f0 45%, #e8ebe6 100%);
+}
+
+.shell {
+  width: min(720px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 4.5rem 0 3rem;
+}
+
+.view[hidden] {
+  display: none;
+}
+
+.view.active {
+  animation: rise 0.45s ease both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brand {
+  font-family: "Fraunces", serif;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+}
+
+h1.brand {
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.5;
+  margin: 0 0 2rem;
+  max-width: 36rem;
+}
+
+.lede.short {
+  margin-bottom: 1.4rem;
+}
+
+.choices {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .choices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.choice {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.choice:hover,
+.choice:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(47, 107, 79, 0.35);
+  box-shadow: 0 10px 28px rgba(26, 46, 36, 0.08);
+  outline: none;
+}
+
+.choice-title {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+.choice-copy {
+  display: block;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.back {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+  font-weight: 600;
+}
+
+.field select,
+.field input[type="text"] {
+  font: inherit;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.field input[type="text"]::placeholder {
+  color: rgba(61, 82, 72, 0.55);
+}
+
+.detail h2 {
+  font-family: "Fraunces", serif;
+  font-size: 1.55rem;
+  margin: 0 0 0.35rem;
+}
+
+.detail .tagline {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.skills {
+  margin: 0 0 1.2rem;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.step {
+  padding: 0.7rem 0.9rem;
+  margin: 0.45rem 0;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  animation: rise 0.35s ease both;
+}
+
+.step strong {
+  margin-right: 0.25rem;
+}
+
+.progress {
+  height: 6px;
+  background: rgba(26, 46, 36, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.q-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.q-text {
+  font-family: "Fraunces", serif;
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
+}
+
+.options {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.2rem;
+}
+
+.option {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.option:hover,
+.option.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #f7faf8;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.banner {
+  background: rgba(47, 107, 79, 0.12);
+  border: 1px solid rgba(47, 107, 79, 0.25);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.note {
+  color: var(--muted);
+  margin-top: 1.2rem;
+  line-height: 1.45;
+}

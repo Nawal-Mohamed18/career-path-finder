@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Career Path Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <main class="shell">
+    <section id="view-home" class="view active">
+      <p class="brand">Career Path Finder</p>
+      <p class="lede">Two ways in: pick a destination and get the route, or answer a few questions and let the path find you.</p>
+      <div class="choices">
+        <button type="button" class="choice" data-go="path">
+          <span class="choice-title">Path to a career</span>
+          <span class="choice-copy">You already know the role. See the steps from here to there.</span>
+        </button>
+        <button type="button" class="choice" data-go="quiz">
+          <span class="choice-title">Career from questions</span>
+          <span class="choice-copy">Not sure yet? Answer four short questions and get a match.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="view-path" class="view" hidden>
+      <button type="button" class="back" data-go="home">← Back home</button>
+      <h1 class="brand">Path to a career</h1>
+      <p class="lede short">Pick the role you want. Get a practical roadmap.</p>
+      <label class="field">
+        <span>Target career</span>
+        <select id="career-select"></select>
+      </label>
+      <label class="field" id="other-field" hidden>
+        <span>Other (describe your path)</span>
+        <input type="text" id="other-input" placeholder="e.g. Game development, QA, DevOps…" maxlength="80" />
+      </label>
+      <div id="path-detail" class="detail"></div>
+    </section>
+
+    <section id="view-quiz" class="view" hidden>
+      <button type="button" class="back" data-go="home">← Back home</button>
+      <h1 class="brand">Career from questions</h1>
+      <p class="lede short">Four questions. One clear direction.</p>
+      <div id="quiz-panel"></div>
+    </section>
+  </main>
+  <script src="static/data.js"></script>
+  <script src="static/app.js"></script>
+</body>
+</html>
